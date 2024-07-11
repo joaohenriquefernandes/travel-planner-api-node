@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
+import nodemailer from "nodemailer";
 import z from "zod";
 import { getMailClient } from "../lib/mail";
 import { prisma } from "../lib/prisma";
@@ -75,6 +76,8 @@ export async function confirmTrip(app:FastifyInstance) {
             </div>
           `.trim()
         })
+
+        console.log(nodemailer.getTestMessageUrl(message))
       }))
       
       return reply.redirect(`http://localhost:3000/trips/${tripId}`)
