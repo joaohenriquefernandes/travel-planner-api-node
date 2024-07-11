@@ -8,6 +8,7 @@ import { createInvite } from './routes/create-invite'
 import { createLink } from './routes/create-link'
 import { createTrip } from './routes/create-trip'
 import { getActivities } from './routes/get-activities'
+import { getParticipant } from './routes/get-participant'
 import { getParticipants } from './routes/get-participants'
 import { getTripDetails } from './routes/get-trp-details'
 import { updateTrip } from './routes/update-trip'
@@ -31,6 +32,7 @@ app.register(getParticipants)
 app.register(createInvite)
 app.register(updateTrip)
 app.register(getTripDetails)
+app.register(getParticipant)
 
 app.listen({
   host: '0.0.0.0',
