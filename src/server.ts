@@ -1,6 +1,8 @@
 import cors from '@fastify/cors'
 import fastify from "fastify"
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod"
+import { env } from './env'
+import { errorHandler } from './error-handler'
 import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
 import { createActivity } from './routes/create-activity'
@@ -22,6 +24,8 @@ app.register(cors, {
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
+app.setErrorHandler(errorHandler)
+
 app.register(createTrip)
 app.register(confirmTrip)
 app.register(confirmParticipant)
@@ -36,7 +40,7 @@ app.register(getParticipant)
 
 app.listen({
   host: '0.0.0.0',
-  port: 3333
+  port: env.PORT
 }).then(() => {
   console.log('Http Server Running at http://localhost:3333')
 })
