@@ -7,6 +7,7 @@ import { createActivity } from './routes/create-activity'
 import { createLink } from './routes/create-link'
 import { createTrip } from './routes/create-trip'
 import { getActivities } from './routes/get-activities'
+import { getParticipants } from './routes/get-participants'
 
 const app = fastify()
 
@@ -23,6 +24,7 @@ app.register(confirmParticipant)
 app.register(createActivity)
 app.register(getActivities)
 app.register(createLink)
+app.register(getParticipants)
 
 app.listen({
   host: '0.0.0.0',
